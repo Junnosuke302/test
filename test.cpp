@@ -8,12 +8,12 @@ using namespace std;
 void sel(int a[], int n)
 {
 	for (int i = 0; i < n - 1; i++) {
-		int x = a[i];
-		for (int j = i + 1; j < n) {
-			if (x > a[j])
-				x = a[j];
+		int x = i;
+		for (int j = i + 1; j < n; j++) {
+			if (a[x] > a[j])
+				x = j;
 		}
-		swap(int, x, a[i]);
+		swap(int, a[x], a[i]);
 	}
 }
 
