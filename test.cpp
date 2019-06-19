@@ -4,14 +4,20 @@
 #define swap(type, x, y) do { type t = x; x = y; y = t; } while (0)
 using namespace std;
 
+//選択ソート
 void sel(int a[], int n)
 {
 	for (int i = 0; i < n - 1; i++) {
-		int x;
-		for (int j = i + 1; j < n)
+		int x = a[i];
+		for (int j = i + 1; j < n) {
+			if (x > a[j])
+				x = a[j];
+		}
+		swap(int, x, a[i]);
 	}
 }
 
+//バブルソート
 void bub(int a[], int n)
 {
 	for (int i = n - 1; i >= 0; i--) {
@@ -22,6 +28,7 @@ void bub(int a[], int n)
 	}
 }
 
+//フィッシャーイエーツのシャッフル
 void shuffle(int a[], int n)
 {
 	int i = n - 1;
@@ -32,6 +39,7 @@ void shuffle(int a[], int n)
 	}
 }
 
+//表示
 void print(int a[], int n)
 {
 	for (int i = 0; i < n; i++)
@@ -55,7 +63,11 @@ int main()
 	cout << "After shuffle: ";
 	print(arr, N);
 
-	bub(arr, N);
-	cout << "After sorting: ";
+	/*bub(arr, N);
+	cout << "After sorting(bub): ";
+	print(arr, N);*/
+
+	sel(arr, N);
+	cout << "After sorting(sel): ";
 	print(arr, N);
 }
