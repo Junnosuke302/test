@@ -4,6 +4,22 @@
 #define swap(type, x, y) do { type t = x; x = y; y = t; } while (0)
 using namespace std;
 
+//挿入ソート
+void ins(int a[], int n)
+{
+	for (int i = 0; i < n; i++) {
+		for (int j = i + 1; j > 0; j--) {
+			int x = a[j];
+			if (a[j - 1] > x)
+				a[j] = a[j - 1];
+			else {
+				a[j] = x;
+				break;
+			}
+		}
+	}
+}
+
 //選択ソート
 void sel(int a[], int n)
 {
@@ -49,25 +65,4 @@ void print(int a[], int n)
 
 int main()
 {
-	int arr[N];
-
-	for (int i = 0; i < N; i++)
-		arr[i] = i;
-
-	cout << "Before shuffle: ";
-	print(arr, N);
-
-	srand(time(NULL));
-
-	shuffle(arr, N);
-	cout << "After shuffle: ";
-	print(arr, N);
-
-	/*bub(arr, N);
-	cout << "After sorting(bub): ";
-	print(arr, N);*/
-
-	sel(arr, N);
-	cout << "After sorting(sel): ";
-	print(arr, N);
 }
