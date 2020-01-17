@@ -132,33 +132,3 @@ void delAll(list *l)
     }
     free(l);
 }
-
-int main(void)
-{
-    int n, i, key;
-    char com[20];
-    list *l = NULL;
-
-    scanf("%d", &n);
-
-    for (i = 0; i < n; i++) {
-        scanf("%s", com);
-        if (com[6] == 'F') {
-            l = delFirst(l);
-        } else if (com[6] == 'L') {
-            l = delLast(l);
-        } else {
-            scanf("%d", &key);
-            if (com[0] == 'i')
-                l = addList(l, key);
-            else
-                l = delList(l, key);
-        }
-    }
-
-    print(l);
-
-    delAll(l);
-
-    return 0;
-}
